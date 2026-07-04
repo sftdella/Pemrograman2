@@ -1,0 +1,261 @@
+/* =========================================================
+   Reservasi Delima - Soft Pink Cute Theme
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --pink-light: #ffe6ef;
+  --pink-soft: #ffd1e3;
+  --pink-mid: #ffb3d1;
+  --pink-strong: #ff8fb1;
+  --pink-dark: #fb6f92;
+  --pink-text: #a4405f;
+  --white: #fffafc;
+  --gray-text: #7a5c66;
+  --shadow: 0 8px 20px rgba(251, 111, 146, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Quicksand', 'Poppins', sans-serif;
+  background: linear-gradient(160deg, var(--pink-light) 0%, #fff 45%, var(--pink-light) 100%);
+  color: var(--gray-text);
+}
+
+.navbar-delima {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  background: linear-gradient(90deg, var(--pink-dark), var(--pink-strong));
+  box-shadow: var(--shadow);
+  border-radius: 0 0 24px 24px;
+}
+
+.navbar-delima .brand {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.navbar-delima .brand .flower {
+  font-size: 1.6rem;
+}
+
+.navbar-delima a.btn-nav {
+  background: #fff;
+  color: var(--pink-dark);
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease;
+}
+
+.navbar-delima a.btn-nav:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.container-delima {
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 0 20px 60px;
+}
+
+.title-page {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.title-page h1 {
+  color: var(--pink-dark);
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.title-page p {
+  color: var(--gray-text);
+  margin: 0;
+}
+
+.card-delima {
+  background: var(--white);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 26px 28px;
+  margin-bottom: 24px;
+  border: 2px solid var(--pink-soft);
+}
+
+.alert-cute {
+  border-radius: 16px;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-sukses {
+  background: #e3fbe8;
+  color: #2f8a4d;
+  border: 2px solid #b9f3c4;
+}
+
+.alert-error {
+  background: #ffe3ec;
+  color: var(--pink-dark);
+  border: 2px solid var(--pink-mid);
+}
+
+table.tabel-reservasi {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+table.tabel-reservasi thead th {
+  text-align: left;
+  color: var(--pink-dark);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0 14px;
+}
+
+table.tabel-reservasi tbody tr {
+  background: var(--pink-light);
+  border-radius: 16px;
+}
+
+table.tabel-reservasi tbody td {
+  padding: 14px;
+  font-weight: 500;
+}
+
+table.tabel-reservasi tbody tr td:first-child {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+table.tabel-reservasi tbody tr td:last-child {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.badge-kamar {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.badge-standard { background: #ffb3c6; }
+.badge-deluxe   { background: #fb6f92; }
+.badge-suite    { background: #c9184a; }
+
+.btn-cute {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary-cute {
+  background: linear-gradient(90deg, var(--pink-dark), var(--pink-strong));
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(251, 111, 146, 0.35);
+}
+
+.btn-primary-cute:hover {
+  transform: translateY(-2px);
+}
+
+.btn-hapus {
+  background: #fff0f5;
+  color: var(--pink-dark);
+  border: 2px solid var(--pink-mid);
+  padding: 7px 16px;
+  font-size: 0.85rem;
+}
+
+.btn-hapus:hover {
+  background: var(--pink-mid);
+  color: #fff;
+}
+
+.form-group-cute {
+  margin-bottom: 18px;
+}
+
+.form-group-cute label {
+  display: block;
+  font-weight: 700;
+  color: var(--pink-text);
+  margin-bottom: 6px;
+}
+
+.form-control-cute {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 2px solid var(--pink-soft);
+  background: var(--pink-light);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--gray-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.form-control-cute:focus {
+  border-color: var(--pink-dark);
+  background: #fff;
+}
+
+.field-error {
+  color: var(--pink-dark);
+  font-size: 0.82rem;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--gray-text);
+}
+
+.empty-state .icon {
+  font-size: 2.4rem;
+}
+
+.kuota-info {
+  font-size: 0.8rem;
+  color: var(--pink-text);
+  margin-top: 4px;
+}
+
+footer.footer-delima {
+  text-align: center;
+  padding: 20px;
+  color: var(--pink-text);
+  font-size: 0.85rem;
+}

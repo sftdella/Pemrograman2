@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservasi Delima - Daftar Reservasi</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar-delima">
+    <a class="brand" th:href="@{/}"><span class="flower">🌸</span> Reservasi Delima</a>
+    <a class="btn-nav" th:href="@{/reservasi/baru}">+ Reservasi Baru</a>
+</nav>
+
+<div class="container-delima">
+
+    <div class="title-page">
+        <h1>Daftar Reservasi Hotel</h1>
+        <p>Kelola reservasi kamar hotel dengan mudah dan menggemaskan 🌷</p>
+    </div>
+
+    <!-- OUTPUT: pesan sukses ditampilkan setelah reservasi berhasil dibuat/dihapus -->
+    <div class="alert-cute alert-sukses" th:if="${pesanSukses}">
+        <span>✅</span> <span th:text="${pesanSukses}">Pesan sukses</span>
+    </div>
+
+    <!-- OUTPUT: pesan error, misalnya jika terjadi kegagalan saat menghapus reservasi -->
+    <div class="alert-cute alert-error" th:if="${errorPesan}">
+        <span>⚠️</span> <span th:text="${errorPesan}">Pesan error</span>
+    </div>
+
+    <div class="card-delima">
+        <!-- Jika belum ada reservasi sama sekali -->
+        <div class="empty-state" th:if="${#lists.isEmpty(daftarReservasi)}">
+            <div class="icon">🌼</div>
+            <p>Belum ada reservasi. Yuk buat reservasi pertama!</p>
+        </div>
+
+        <!-- Tabel daftar reservasi (OUTPUT utama, diambil dari database via
+             ReservasiService.getSemuaReservasi() -> ReservasiRepository -> MySQL) -->
+        <table class="tabel-reservasi" th:if="${not #lists.isEmpty(daftarReservasi)}">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama Tamu</th>
+                <th>Tipe Kamar</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Lama Menginap</th>
+                <th>Aksi</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="r : ${daftarReservasi}">
+                <td th:text="${r.id}">1</td>
+                <td th:text="${r.namaTamu}">Nama Tamu</td>
+                <td>
+                    <span class="badge-kamar"
+                          th:classappend="${r.tipeKamar.name() == 'STANDARD'} ? 'badge-standard' : (${r.tipeKamar.name() == 'DELUXE'} ? 'badge-deluxe' : 'badge-suite')"
+                          th:text="${r.tipeKamar.label}">Standard</span>
+                </td>
+                <td th:text="${#temporals.format(r.tanggalCheckIn, 'dd-MM-yyyy')}">01-01-2026</td>
+                <td th:text="${#temporals.format(r.tanggalCheckOut, 'dd-MM-yyyy')}">02-01-2026</td>
+                <td th:text="${r.hitungLamaMenginap()} + ' malam'">1 malam</td>
+                <td>
+                    <form th:action="@{/reservasi/hapus/{id}(id=${r.id})}" method="post"
+                          onsubmit="return confirm('Yakin ingin menghapus reservasi ini?');">
+                        <button type="submit" class="btn-cute btn-hapus">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<footer class="footer-delima">
+    Reservasi Delima &copy; 2026 - UAS Pemrograman II
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservasi Delima - Terjadi Kesalahan</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar-delima">
+    <a class="brand" th:href="@{/}"><span class="flower">🌸</span> Reservasi Delima</a>
+    <a class="btn-nav" th:href="@{/}">← Kembali ke Beranda</a>
+</nav>
+
+<div class="container-delima">
+    <div class="card-delima" style="text-align:center;">
+        <div style="font-size:2.4rem;">🥀</div>
+        <h2 style="color:var(--pink-dark);">Oops, terjadi kesalahan</h2>
+        <p th:text="${errorPesan}">Detail error</p>
+        <a class="btn-cute btn-primary-cute" th:href="@{/}">Kembali ke Beranda</a>
+    </div>
+</div>
+
+</body>
+</html>

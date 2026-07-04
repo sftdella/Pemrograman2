@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservasi Delima - Reservasi Baru</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar-delima">
+    <a class="brand" th:href="@{/}"><span class="flower">🌸</span> Reservasi Delima</a>
+    <a class="btn-nav" th:href="@{/}">← Kembali</a>
+</nav>
+
+<div class="container-delima">
+
+    <div class="title-page">
+        <h1>Buat Reservasi Baru</h1>
+        <p>Isi data di bawah ini untuk memesan kamar 💕</p>
+    </div>
+
+    <!-- OUTPUT: pesan error, misalnya KamarPenuhException atau ReservasiGagalException -->
+    <div class="alert-cute alert-error" th:if="${errorPesan}">
+        <span>⚠️</span> <span th:text="${errorPesan}">Pesan error</span>
+    </div>
+
+    <div class="card-delima">
+        <!-- INPUT: form pengisian data reservasi baru -->
+        <form th:action="@{/reservasi/simpan}" th:object="${reservasi}" method="post">
+
+            <div class="form-group-cute">
+                <label for="namaTamu">Nama Tamu</label>
+                <input type="text" id="namaTamu" class="form-control-cute"
+                       th:field="*{namaTamu}" placeholder="Contoh: Della Amelia" />
+                <div class="field-error" th:if="${#fields.hasErrors('namaTamu')}"
+                     th:errors="*{namaTamu}">Nama wajib diisi</div>
+            </div>
+
+            <div class="form-group-cute">
+                <label for="tipeKamar">Tipe Kamar</label>
+                <select id="tipeKamar" class="form-control-cute" th:field="*{tipeKamar}">
+                    <option value="">-- Pilih Tipe Kamar --</option>
+                    <option th:each="tipe : ${semuaTipeKamar}"
+                            th:value="${tipe}"
+                            th:text="${tipe.label} + ' (Rp ' + ${#numbers.formatInteger(tipe.hargaPerMalam,0,'POINT')} + ' / malam)'">
+                        Standard
+                    </option>
+                </select>
+                <div class="field-error" th:if="${#fields.hasErrors('tipeKamar')}"
+                     th:errors="*{tipeKamar}">Tipe kamar wajib dipilih</div>
+            </div>
+
+            <div class="form-group-cute">
+                <label for="tanggalCheckIn">Tanggal Check-in</label>
+                <input type="date" id="tanggalCheckIn" class="form-control-cute"
+                       th:field="*{tanggalCheckIn}" />
+                <div class="field-error" th:if="${#fields.hasErrors('tanggalCheckIn')}"
+                     th:errors="*{tanggalCheckIn}">Tanggal check-in wajib diisi</div>
+            </div>
+
+            <div class="form-group-cute">
+                <label for="tanggalCheckOut">Tanggal Check-out</label>
+                <input type="date" id="tanggalCheckOut" class="form-control-cute"
+                       th:field="*{tanggalCheckOut}" />
+                <div class="field-error" th:if="${#fields.hasErrors('tanggalCheckOut')}"
+                     th:errors="*{tanggalCheckOut}">Tanggal check-out wajib diisi</div>
+            </div>
+
+            <button type="submit" class="btn-cute btn-primary-cute">🌷 Simpan Reservasi</button>
+        </form>
+    </div>
+
+</div>
+
+<footer class="footer-delima">
+    Reservasi Delima &copy; 2026 - UAS Pemrograman II
+</footer>
+
+</body>
+</html>
